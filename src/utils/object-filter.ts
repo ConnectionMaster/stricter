@@ -2,13 +2,14 @@ export const objectFilter = <T>(
     object: { [key: string]: T },
     filter: string[],
 ): { [key: string]: T } => {
-    const set = new Set(filter);
-    const result = Object.keys(object)
-        .filter((i) => set.has(i))
-        .reduce((acc, prop) => {
-            acc[prop] = object[prop];
+    const result = filter.reduce((acc, prop) => {
+        const value = object[prop];
+        if (typeof value === 'undefined' && !object.hasOwnProperty(prop)) {
             return acc;
-        }, {} as { [key: string]: T });
+        }
+        acc[prop] = value;
+        return acc;
+    }, {} as { [key: string]: T });
 
     return result;
 };

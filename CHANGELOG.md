@@ -2,6 +2,22 @@
 
 ## Master
 
+## 0.5.0 - Ignore incorrect package exports
+
+- **BREAKING** Ignore `package.json` `exports` field when resolving dependencies; this change might add missing entries to dependency graph, which could lead to rules finding the issues, not visible before
+- Improve performance of files filter for the rules
+- Bump dependencies
+
+## 0.4.7 - Decrease memory consumption
+
+- Do not cache file contents in memory for faster ast parsing; this will significantly decrease memory requirements for larger codebases
+
+## 0.4.6 - Faster dependency resolution
+
+- Bump dependencies
+- Dependency resolution performance improvement (copied from https://github.com/atlassian-labs/webpack-deduplication-plugin)
+- Fixed schema generation to avoid typeof
+
 ## 0.4.5 - Think about testing
 
 - Bump dependencies
